@@ -18,3 +18,8 @@ Playlist: https://www.youtube.com/playlist?list=PLYBGY593fNqrDRydSC0OR_MquxqqAW5
 - Throttle using milisecs delay (stop hitting developer account qouta)
 - Merge loop inserting to Youtube playlist with reading from Discord
 - Windows One-click installer with miniconda
+
+## Contibutions
+
+- Fork this repository and create a merge request.
+- Add suggestion to Issue tracker.
