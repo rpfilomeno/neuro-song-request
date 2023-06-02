@@ -9,6 +9,7 @@ import googleapiclient.errors
 import backoff
 import traceback
 import time
+from dotenv import load_dotenv
 
 load_dotenv(os.path.join(os.path.realpath(os.path.dirname(__file__)), '.env'))
 
@@ -68,8 +69,11 @@ def get_video_ids(thread_id):
 	print("total unique:",len(unique_videoes))
 	print("total new:",len(new_videoes))
 
-
-	last_msg_id = jsonn[0]['id']
+	try:
+		last_msg_id = jsonn[0]['id']
+	except:
+		print('Reached end of Discord thread.')
+		exit()
 	
 	if len(new_videoes) > 0:
 		v = new_videoes + old_videoes
@@ -103,7 +107,7 @@ def main():
 				pickle.dump(v, fh)
 		input("Press Enter to continue...")
 
-		last_msg_id, video_ids, v = get_video_ids(PLAYLIST_ID = os.getenv("DISCORD_THREAD_ID",None))
+		last_msg_id, video_ids, v = get_video_ids(os.getenv("DISCORD_THREAD_ID",None))
 		
 		for video_id in video_ids:
 			print("adding:", video_id)
