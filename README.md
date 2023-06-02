@@ -1,5 +1,7 @@
 # Neurosama HQ Song Request
 
+Playlist: https://www.youtube.com/playlist?list=PLYBGY593fNqrDRydSC0OR_MquxqqAW5oE
+
 - This adds Youtube video links  found on a Discord thread to a Youtube playlist.
 - Removes duplicates
 - Manual throttle/advance coz Google developer account API qouta sucks
