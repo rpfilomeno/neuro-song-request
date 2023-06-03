@@ -1,5 +1,6 @@
 # Neurosama HQ Song Request
 
+Discord thread: https://discord.com/channels/574720535888396288/1095957005816045618
 Youtube Playlist: https://www.youtube.com/playlist?list=PLYBGY593fNqrDRydSC0OR_MquxqqAW5oE
 Spotify Playlist: https://open.spotify.com/playlist/2VnWtNEhVo9IUA5TbBL8zh
 
