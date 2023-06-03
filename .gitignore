@@ -161,5 +161,6 @@ cython_debug/
 
 ##Custom
 last_msg_id.txt
-videos.pkl
 client_secrets.json
+youtube_client_secrets.json
+*.pkl
