@@ -167,7 +167,7 @@ if __name__ == "__main__":
 	if os.path.exists(CACHE_FILE):
 		with open(CACHE_FILE,'rb') as fh:
 			uris = pickle.load(fh)
-			print('loading', len(uris), 'ytack from cache:',CACHE_FILE,'delete this to start new')	
+			print('loading', len(uris), ' spotify tracks from cache:',CACHE_FILE,'delete this to start new')	
 	else:
 		uris = get_spotify_uri(sp, song_info)
 		if uris:
