@@ -52,7 +52,7 @@ def get_discord_vids(channelid, last_msg_id):
 		r = requests.get(f'https://discord.com/api/v9/channels/{channelid}/messages?after={last_msg_id}&limit=50', headers=headers, timeout=5)
 		try:
 			messages = json.loads(r.text)	
-			last_msg_id = messages[-1]['id']
+			last_msg_id = messages[0]['id']
 			for item in messages:
 				dvids = extract_videos_id(item['content'])
 				print(item['id'],':',item['content'],'-',dvids)
@@ -75,12 +75,12 @@ def get_vids(thread_id):
 
 	
 	discord_vids, last_msg_id = get_discord_vids(thread_id, last_msg_id)
-	playlist_vids = get_playlist_vids(os.getenv("PLAYLIST_ID",None))
-	new_vids = [x for x in discord_vids if x not in playlist_vids]
-	new_vids = list(set(new_vids))
+	#playlist_vids = get_playlist_vids(os.getenv("PLAYLIST_ID",None))
+	#new_vids = [x for x in discord_vids if x not in playlist_vids]
+	new_vids = list(set(discord_vids))
 
-	print("playlist count:",len(playlist_vids))
-	print("total found:",len(discord_vids))
+	#print("playlist count:",len(playlist_vids))
+	#print("total found:",len(discord_vids))
 	print("total new:",len(new_vids))
 
 	return (new_vids, last_msg_id)
