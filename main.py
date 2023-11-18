@@ -85,15 +85,14 @@ def get_vids(thread_id):
 
 	return (new_vids, last_msg_id)
 
-@backoff.on_exception(backoff.expo, (googleapiclient.errors.HttpError),
-    on_backoff=lambda details: print("Backing off {wait:0.1f} seconds after {tries} tries add_vids()".format(**details)))
+@backoff.on_exception(backoff.expo, (googleapiclient.errors.HttpError), 
+    on_backoff=lambda details: print("Backing off {wait:0.1f} seconds after {tries} tries add_vids()".format(**details)), max_tries=5)
 def add_vids(youtube, video_id):
 	r = youtube.playlistItems().insert(
 			part="snippet",
 			body={
 				"snippet": {
 					"playlistId": PLAYLIST_ID, #an actual playlistid
-					"position": 0,
 					"resourceId": {
 					"kind": "youtube#video",
 					"videoId": video_id
@@ -141,7 +140,11 @@ def main():
 
 
 		for video_id in new_vids:
-			add_vids(youtube,video_id)
+			try:
+				add_vids(youtube,video_id)
+			except Exception as e:
+				print("unable to add video id:", video_id, ", error: ",e)
+				input("Press Enter to continue...")
 			time.sleep(1)
 
 if __name__ == "__main__":
